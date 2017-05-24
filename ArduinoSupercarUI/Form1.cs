@@ -19,7 +19,6 @@ namespace ArduinoSupercarUI
     {
         //Yhteyden määrittelymuuttujat
         public bool connected_to_host = false;
-        public Socket led_socket = null;
 
         //Kameran määrittelymuuttujat
         private FilterInfoCollection webcam;
@@ -68,7 +67,7 @@ namespace ArduinoSupercarUI
             if(cam.IsRunning)
             {
                 cam.Stop();
-                UI_webcam.Image = ArduinoSupercarUI.Properties.Resources.presstartlivefeed;
+                UI_webcam.Image = Properties.Resources.presstartlivefeed;
             }
         }
 
@@ -163,10 +162,35 @@ namespace ArduinoSupercarUI
 
         private void UI_up_Click(object sender, EventArgs e)
         {
-
+            UI_Button_Press(Keys.Up);
+        }
+        private void UI_left_Click(object sender, EventArgs e)
+        {
+            UI_Button_Press(Keys.Left);
+        }
+        private void UI_right_Click(object sender, EventArgs e)
+        {
+            UI_Button_Press(Keys.Right);
+        }
+        private void UI_down_Click(object sender, EventArgs e)
+        {
+            UI_Button_Press(Keys.Down);
+        }
+        private void UI_break_Click(object sender, EventArgs e)
+        {
+            UI_Button_Press(Keys.Space);
+        }
+        private void UI_lights_ON_Click(object sender, EventArgs e)
+        {
+            UI_Button_Press(Keys.L);
         }
 
-        private void UI_left_Click(object sender, EventArgs e)
+        private void UI_lights_OFF_Click(object sender, EventArgs e)
+        {
+            UI_Button_Press(Keys.L);
+        }
+
+        private void UI_connection_ip_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -247,9 +271,136 @@ namespace ArduinoSupercarUI
 
         }
 
-        private void UI_connection_ip_TextChanged(object sender, EventArgs e)
+        private void UI_Button_Press(Keys key)
+        {
+            switch (key)
+            {
+                case Keys.L:
+                    Globals.Lights = Globals.Lights == "O" ? "X" : "O";
+                    UI_lights_ON.BackColor = UI_lights_ON.BackColor == SystemColors.Control ? Color.LightBlue : SystemColors.Control;
+                    UI_lights_ON.Text = UI_lights_ON.Text == "ON" ? "OFF" : "ON";
+                    break;
+                case Keys.Up:
+                    Globals.Forward = Globals.Forward == "F" ? "X" : "F";
+                    Globals.Backward = "X";
+                    break;
+                case Keys.Down:
+                    Globals.Backward = Globals.Backward == "B" ? "X" : "B";
+                    Globals.Forward = "X";
+                    break;
+                case Keys.Left:
+                    Globals.Left = Globals.Left == "L" ? "X" : "L";
+                    Globals.Right = "X";
+                    break;
+                case Keys.Right:
+                    Globals.Right = Globals.Right == "R" ? "X" : "R";
+                    Globals.Left = "X";
+                    break;
+                case Keys.Space:
+                    Globals.Forward = "X";
+                    Globals.Backward = "X";
+                    break;
+            }
+
+            UI_Debug.Text = Globals.Forward.ToString() + "\n" + Globals.Backward.ToString() + "\n" + Globals.Left.ToString() + "\n" + Globals.Right.ToString() + "\n" + Globals.Lights.ToString();
+
+        }
+
+        private void arduinoUI_KeyUP(object sender, KeyEventArgs e)
+        {
+            // Determine whether the key entered is the F1 key. Display help if it is.
+            /*if (e.KeyCode == Keys.L)
+            {
+                Globals.Lights = "X";
+            }*/
+            if (e.KeyCode == Keys.Up)
+            {
+                Globals.Forward = "X";
+                UI_up.BackColor = SystemColors.Control;
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                Globals.Backward = "X";
+                UI_down.BackColor = SystemColors.Control;
+            }
+            if (e.KeyCode == Keys.Left)
+            {
+                Globals.Left = "X";
+                UI_left.BackColor = SystemColors.Control;
+            }
+            if (e.KeyCode == Keys.Right)
+            {
+                Globals.Right = "X";
+                UI_right.BackColor = SystemColors.Control;
+            }
+            if (e.KeyCode == Keys.Space)
+            {
+                UI_break.BackColor = SystemColors.Control;
+            }
+
+            UI_Debug.Text = Globals.Forward.ToString() + "\n" + Globals.Backward.ToString() + "\n" + Globals.Left.ToString() + "\n" + Globals.Right.ToString() + "\n" + Globals.Lights.ToString();
+
+        }
+
+        private void arduinoUI_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!connected_to_host)
+            {
+
+                if (e.KeyCode == Keys.L)
+                {
+                    Globals.Lights = Globals.Lights == "O" ? "X" : "O";
+                    UI_lights_ON.BackColor = UI_lights_ON.BackColor == SystemColors.Control ? Color.LightBlue : SystemColors.Control;
+                    UI_lights_ON.Text = UI_lights_ON.Text == "ON" ? "OFF" : "ON";
+                }
+                if (e.KeyCode == Keys.Up)
+                {
+                    Globals.Forward = "F";
+                    Globals.Backward = "X";
+                    UI_up.BackColor = Color.LightBlue;
+                }
+                if (e.KeyCode == Keys.Down)
+                {
+                    Globals.Backward = "B";
+                    Globals.Forward = "X";
+                    UI_down.BackColor = Color.LightBlue;
+                }
+                if (e.KeyCode == Keys.Left)
+                {
+                    Globals.Left = "L";
+                    Globals.Right = "X";
+                    UI_left.BackColor = Color.LightBlue;
+                }
+                if (e.KeyCode == Keys.Right)
+                {
+                    Globals.Right = "R";
+                    Globals.Left = "X";
+                    UI_right.BackColor = Color.LightBlue;
+                }
+                if (e.KeyCode == Keys.Space)
+                {
+                    Globals.Forward = "X";
+                    Globals.Backward = "X";
+                    UI_break.BackColor = Color.LightBlue;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Not Connected to Client");
+            }
+            UI_Debug.Text = Globals.Forward.ToString() + "\n" + Globals.Backward.ToString() + "\n" + Globals.Left.ToString() + "\n" + Globals.Right.ToString() + "\n" + Globals.Lights.ToString();
+
+        }
+
+        private void UI_Debug_TextChanged(object sender, EventArgs e)
         {
 
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            UI_Debug.Focus();
+        }
+
     }
 }
