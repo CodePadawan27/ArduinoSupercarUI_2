@@ -21,8 +21,8 @@ namespace ArduinoSupercarUI
         public bool connected_to_host = false;
 
         //Kameran määrittelymuuttujat
-        private FilterInfoCollection webcam;
-        private VideoCaptureDevice cam;
+        protected FilterInfoCollection webcam;
+        protected VideoCaptureDevice cam;
 
         public class Globals
         {
@@ -47,7 +47,7 @@ namespace ArduinoSupercarUI
         
 
         //Käyttöliittymän webcam-olion latausmetodi
-        private void arduinoUI_Load(object sender, EventArgs e)
+        protected void arduinoUI_Load(object sender, EventArgs e)
         {
             webcam = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             foreach (FilterInfo VideoCaptureDevice in webcam)
@@ -56,13 +56,13 @@ namespace ArduinoSupercarUI
             }            
         }
         //Menu-valikko | sulje-komento
-        private void suljeToolStripMenuItem_Click(object sender, EventArgs e)
+        protected void suljeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
         }
 
         //Kameran stop-nappi
-        private void UI_button_stop_Click(object sender, EventArgs e)
+        protected void UI_button_stop_Click(object sender, EventArgs e)
         {
 
             try
@@ -130,7 +130,7 @@ namespace ArduinoSupercarUI
 
         private void UI_webcam_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         //Connect-napin määrittely

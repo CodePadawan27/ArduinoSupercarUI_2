@@ -51,7 +51,6 @@
             this.UI_break = new System.Windows.Forms.Button();
             this.UI_lights_group = new System.Windows.Forms.GroupBox();
             this.UI_webcam_group = new System.Windows.Forms.GroupBox();
-            this.UI_webcam_large = new System.Windows.Forms.Button();
             this.UI_connection_ip = new System.Windows.Forms.TextBox();
             this.UI_button_connect = new System.Windows.Forms.Button();
             this.UI_connection_port = new System.Windows.Forms.TextBox();
@@ -62,6 +61,7 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.UI_webcam_large = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.UI_control_group.SuspendLayout();
             this.UI_lights_group.SuspendLayout();
@@ -293,16 +293,6 @@
             this.UI_webcam_group.TabStop = false;
             this.UI_webcam_group.Text = "Camera";
             // 
-            // UI_webcam_large
-            // 
-            this.UI_webcam_large.Location = new System.Drawing.Point(415, 13);
-            this.UI_webcam_large.Name = "UI_webcam_large";
-            this.UI_webcam_large.Size = new System.Drawing.Size(24, 23);
-            this.UI_webcam_large.TabIndex = 14;
-            this.UI_webcam_large.Text = "+";
-            this.UI_webcam_large.UseVisualStyleBackColor = true;
-            this.UI_webcam_large.Click += new System.EventHandler(this.UI_webcam_large_Click);
-            // 
             // UI_connection_ip
             // 
             this.UI_connection_ip.Location = new System.Drawing.Point(50, 256);
@@ -399,6 +389,16 @@
             this.label2.TabIndex = 13;
             this.label2.Text = "control using arrows";
             this.label2.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // UI_webcam_large
+            // 
+            this.UI_webcam_large.Location = new System.Drawing.Point(415, 13);
+            this.UI_webcam_large.Name = "UI_webcam_large";
+            this.UI_webcam_large.Size = new System.Drawing.Size(24, 23);
+            this.UI_webcam_large.TabIndex = 14;
+            this.UI_webcam_large.Text = "+";
+            this.UI_webcam_large.UseVisualStyleBackColor = true;
+            this.UI_webcam_large.Click += new System.EventHandler(this.UI_webcam_large_Click);
             // 
             // arduinoUI
             // 
