@@ -46,7 +46,7 @@ namespace ArduinoSupercarUI
 
         
 
-
+        //Käyttöliittymän webcam-olion latausmetodi
         private void arduinoUI_Load(object sender, EventArgs e)
         {
             webcam = new FilterInfoCollection(FilterCategory.VideoInputDevice);
@@ -55,7 +55,7 @@ namespace ArduinoSupercarUI
                 UI_combobox_valikko.Items.Add(VideoCaptureDevice.Name);
             }            
         }
-
+        //Menu-valikko | sulje-komento
         private void suljeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
@@ -71,6 +71,7 @@ namespace ArduinoSupercarUI
             }
         }
 
+        //Webcam | Take picture napin toimintametodi
         private void UI_button_picture_Click(object sender, EventArgs e)
         {
             UI_tallennusRuutu.InitialDirectory = @"c:\ArduinoKuvat";
@@ -80,6 +81,7 @@ namespace ArduinoSupercarUI
             }
         }
 
+        //Webcam | Start-napin toimintametodi
         private void UI_button_start_Click(object sender, EventArgs e)
         {
             if(UI_combobox_valikko.Items.Count != 0)
@@ -92,11 +94,11 @@ namespace ArduinoSupercarUI
                     cam.Start();
                 } else
                 {
-                    MessageBox.Show("Select a webcam first.");
+                    MessageBox.Show("Please select a webcam first.");
                 }
             } else
             {
-                MessageBox.Show("Connect a webcam first.");
+                MessageBox.Show("Please connect a webcam first.");
             }
         }
 
@@ -111,6 +113,7 @@ namespace ArduinoSupercarUI
 
         }
 
+        //Menu-valikko | about-komento
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Terve");
@@ -233,6 +236,8 @@ namespace ArduinoSupercarUI
             }
             return s;
         }
+
+        
 
 
         public class Worker
@@ -402,5 +407,9 @@ namespace ArduinoSupercarUI
             UI_Debug.Focus();
         }
 
+        private void UI_webcam_large_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

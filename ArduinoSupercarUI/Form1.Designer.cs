@@ -51,6 +51,7 @@
             this.UI_break = new System.Windows.Forms.Button();
             this.UI_lights_group = new System.Windows.Forms.GroupBox();
             this.UI_webcam_group = new System.Windows.Forms.GroupBox();
+            this.UI_webcam_large = new System.Windows.Forms.Button();
             this.UI_connection_ip = new System.Windows.Forms.TextBox();
             this.UI_button_connect = new System.Windows.Forms.Button();
             this.UI_connection_port = new System.Windows.Forms.TextBox();
@@ -64,6 +65,7 @@
             this.menuStrip1.SuspendLayout();
             this.UI_control_group.SuspendLayout();
             this.UI_lights_group.SuspendLayout();
+            this.UI_webcam_group.SuspendLayout();
             this.UI_group_connection.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UI_logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UI_webcam)).BeginInit();
@@ -283,12 +285,23 @@
             // 
             // UI_webcam_group
             // 
+            this.UI_webcam_group.Controls.Add(this.UI_webcam_large);
             this.UI_webcam_group.Location = new System.Drawing.Point(453, 47);
             this.UI_webcam_group.Name = "UI_webcam_group";
-            this.UI_webcam_group.Size = new System.Drawing.Size(415, 369);
+            this.UI_webcam_group.Size = new System.Drawing.Size(445, 369);
             this.UI_webcam_group.TabIndex = 9;
             this.UI_webcam_group.TabStop = false;
             this.UI_webcam_group.Text = "Camera";
+            // 
+            // UI_webcam_large
+            // 
+            this.UI_webcam_large.Location = new System.Drawing.Point(415, 13);
+            this.UI_webcam_large.Name = "UI_webcam_large";
+            this.UI_webcam_large.Size = new System.Drawing.Size(24, 23);
+            this.UI_webcam_large.TabIndex = 14;
+            this.UI_webcam_large.Text = "+";
+            this.UI_webcam_large.UseVisualStyleBackColor = true;
+            this.UI_webcam_large.Click += new System.EventHandler(this.UI_webcam_large_Click);
             // 
             // UI_connection_ip
             // 
@@ -419,6 +432,7 @@
             this.menuStrip1.PerformLayout();
             this.UI_control_group.ResumeLayout(false);
             this.UI_lights_group.ResumeLayout(false);
+            this.UI_webcam_group.ResumeLayout(false);
             this.UI_group_connection.ResumeLayout(false);
             this.UI_group_connection.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UI_logo)).EndInit();
@@ -461,6 +475,7 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button UI_webcam_large;
     }
 }
 
