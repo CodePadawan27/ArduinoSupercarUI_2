@@ -64,13 +64,22 @@ namespace ArduinoSupercarUI
         //Kameran stop-nappi
         private void UI_button_stop_Click(object sender, EventArgs e)
         {
-            if(cam.IsRunning)
+
+            try
             {
-                cam.Stop();
-                UI_webcam.Image = Properties.Resources.presstartlivefeed;
+
+                if (cam.IsRunning)
+                {
+                    cam.Stop();
+                    UI_webcam.Image = Properties.Resources.presstartlivefeed;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
-
+           
         //Webcam | Take picture napin toimintametodi
         private void UI_button_picture_Click(object sender, EventArgs e)
         {
