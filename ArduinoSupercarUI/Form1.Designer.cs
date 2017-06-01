@@ -173,13 +173,14 @@
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem1
             // 
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem1.Text = "About";
             this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
             // 
@@ -348,6 +349,7 @@
             this.UI_webcam.Location = new System.Drawing.Point(465, 60);
             this.UI_webcam.Name = "UI_webcam";
             this.UI_webcam.Size = new System.Drawing.Size(389, 253);
+            this.UI_webcam.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.UI_webcam.TabIndex = 3;
             this.UI_webcam.TabStop = false;
             this.UI_webcam.Click += new System.EventHandler(this.UI_webcam_Click);

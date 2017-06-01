@@ -113,7 +113,7 @@ namespace ArduinoSupercarUI
 
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Terve");
+            MessageBox.Show("Arduino Supercar Team\n\n Jarno Rostedt\n Teemu Kettunen\n Saija Kaitio\n Seila Laakso\n Niina Sormunen ");
         }
 
         private void UI_webcam_Click(object sender, EventArgs e)
@@ -402,5 +402,9 @@ namespace ArduinoSupercarUI
             UI_Debug.Focus();
         }
 
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
