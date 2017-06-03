@@ -80,7 +80,7 @@ namespace ArduinoSupercarUI
         {
             if(webcam_on)
             {
-                Form2 Form2 = new Form2(cam);
+                Popout Form2 = new Popout(cam);
                 Form2.Show();
             }
         }

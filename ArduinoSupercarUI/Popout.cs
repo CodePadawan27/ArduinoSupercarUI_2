@@ -12,9 +12,9 @@ using AForge.Video.DirectShow;
 
 namespace ArduinoSupercarUI
 {
-    public partial class Form2 : Form
+    public partial class Popout : Form
     {
-        public Form2(VideoCaptureDevice popout_cam)
+        public Popout(VideoCaptureDevice popout_cam)
         {
             InitializeComponent();
             popout_cam.NewFrame += new NewFrameEventHandler(popout_NewFrame);

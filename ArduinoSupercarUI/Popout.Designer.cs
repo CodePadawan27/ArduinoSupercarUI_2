@@ -1,6 +1,6 @@
 ﻿namespace ArduinoSupercarUI
 {
-    partial class Form2
+    partial class Popout
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Popout));
             this.popout_webcam = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.popout_webcam)).BeginInit();
             this.SuspendLayout();
@@ -45,14 +46,15 @@
             this.popout_webcam.TabIndex = 0;
             this.popout_webcam.TabStop = false;
             // 
-            // Form2
+            // Popout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 681);
             this.Controls.Add(this.popout_webcam);
-            this.Name = "Form2";
-            this.Text = "Form2";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "Popout";
+            this.Text = "Popout";
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.popout_webcam)).EndInit();
             this.ResumeLayout(false);
