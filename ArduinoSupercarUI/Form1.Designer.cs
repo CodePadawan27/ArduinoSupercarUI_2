@@ -42,7 +42,6 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.UI_button_start = new System.Windows.Forms.Button();
-            this.UI_button_stop = new System.Windows.Forms.Button();
             this.UI_button_picture = new System.Windows.Forms.Button();
             this.UI_combobox_valikko = new System.Windows.Forms.ComboBox();
             this.UI_tallennusRuutu = new System.Windows.Forms.SaveFileDialog();
@@ -61,6 +60,7 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.UI_button_popout = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.UI_control_group.SuspendLayout();
             this.UI_lights_group.SuspendLayout();
@@ -173,13 +173,14 @@
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem1
             // 
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem1.Text = "About";
             this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
             // 
@@ -194,19 +195,9 @@
             this.UI_button_start.UseVisualStyleBackColor = true;
             this.UI_button_start.Click += new System.EventHandler(this.UI_button_start_Click);
             // 
-            // UI_button_stop
-            // 
-            this.UI_button_stop.Location = new System.Drawing.Point(778, 384);
-            this.UI_button_stop.Name = "UI_button_stop";
-            this.UI_button_stop.Size = new System.Drawing.Size(75, 23);
-            this.UI_button_stop.TabIndex = 4;
-            this.UI_button_stop.TabStop = false;
-            this.UI_button_stop.Text = "Stop";
-            this.UI_button_stop.UseVisualStyleBackColor = true;
-            this.UI_button_stop.Click += new System.EventHandler(this.UI_button_stop_Click);
-            // 
             // UI_button_picture
             // 
+            this.UI_button_picture.Enabled = false;
             this.UI_button_picture.Location = new System.Drawing.Point(613, 384);
             this.UI_button_picture.Name = "UI_button_picture";
             this.UI_button_picture.Size = new System.Drawing.Size(92, 23);
@@ -348,6 +339,7 @@
             this.UI_webcam.Location = new System.Drawing.Point(465, 60);
             this.UI_webcam.Name = "UI_webcam";
             this.UI_webcam.Size = new System.Drawing.Size(389, 253);
+            this.UI_webcam.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.UI_webcam.TabIndex = 3;
             this.UI_webcam.TabStop = false;
             this.UI_webcam.Click += new System.EventHandler(this.UI_webcam_Click);
@@ -387,6 +379,18 @@
             this.label2.Text = "control using arrows";
             this.label2.Click += new System.EventHandler(this.label1_Click);
             // 
+            // UI_button_popout
+            // 
+            this.UI_button_popout.Enabled = false;
+            this.UI_button_popout.Location = new System.Drawing.Point(778, 384);
+            this.UI_button_popout.Name = "UI_button_popout";
+            this.UI_button_popout.Size = new System.Drawing.Size(75, 23);
+            this.UI_button_popout.TabIndex = 4;
+            this.UI_button_popout.TabStop = false;
+            this.UI_button_popout.Text = "Popout";
+            this.UI_button_popout.UseVisualStyleBackColor = true;
+            this.UI_button_popout.Click += new System.EventHandler(this.UI_button_popout_Click);
+            // 
             // arduinoUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -402,7 +406,7 @@
             this.Controls.Add(this.UI_control_group);
             this.Controls.Add(this.UI_combobox_valikko);
             this.Controls.Add(this.UI_button_picture);
-            this.Controls.Add(this.UI_button_stop);
+            this.Controls.Add(this.UI_button_popout);
             this.Controls.Add(this.UI_button_start);
             this.Controls.Add(this.UI_webcam);
             this.Controls.Add(this.UI_otsikko);
@@ -414,6 +418,7 @@
             this.MaximizeBox = false;
             this.Name = "arduinoUI";
             this.Text = "Arduino SuperCar";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.arduinoUI_FormClosing);
             this.Load += new System.EventHandler(this.arduinoUI_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -442,7 +447,6 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.PictureBox UI_webcam;
         private System.Windows.Forms.Button UI_button_start;
-        private System.Windows.Forms.Button UI_button_stop;
         private System.Windows.Forms.Button UI_button_picture;
         private System.Windows.Forms.ComboBox UI_combobox_valikko;
         private System.Windows.Forms.SaveFileDialog UI_tallennusRuutu;
@@ -461,6 +465,7 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button UI_button_popout;
     }
 }
 

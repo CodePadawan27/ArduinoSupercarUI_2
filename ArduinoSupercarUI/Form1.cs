@@ -24,6 +24,8 @@ namespace ArduinoSupercarUI
         private FilterInfoCollection webcam;
         private VideoCaptureDevice cam;
 
+        private bool webcam_on = false;
+
         public class Globals
         {
             public static Socket led_socket;
@@ -58,17 +60,11 @@ namespace ArduinoSupercarUI
 
         private void suljeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Close();
-        }
-
-        //Kameran stop-nappi
-        private void UI_button_stop_Click(object sender, EventArgs e)
-        {
-            if(cam.IsRunning)
+            if (webcam_on)
             {
                 cam.Stop();
-                UI_webcam.Image = Properties.Resources.presstartlivefeed;
             }
+            Close();
         }
 
         private void UI_button_picture_Click(object sender, EventArgs e)
@@ -80,9 +76,27 @@ namespace ArduinoSupercarUI
             }
         }
 
+        private void UI_button_popout_Click(object sender, EventArgs e)
+        {
+            if(webcam_on)
+            {
+                Form2 Form2 = new Form2(cam);
+                Form2.Show();
+            }
+        }
+
         private void UI_button_start_Click(object sender, EventArgs e)
         {
-            if(UI_combobox_valikko.Items.Count != 0)
+            if (webcam_on)
+            {
+                cam.Stop();
+                webcam_on = false;
+                UI_button_start.Text = "Start";
+                UI_button_picture.Enabled = false;
+                UI_button_popout.Enabled = false;
+                UI_webcam.Image = Properties.Resources.presstartlivefeed;
+            }
+            else if (UI_combobox_valikko.Items.Count != 0)
             {
                 if (UI_combobox_valikko.SelectedItem != null)
                 {
@@ -90,11 +104,17 @@ namespace ArduinoSupercarUI
 
                     cam.NewFrame += new NewFrameEventHandler(cam_NewFrame);
                     cam.Start();
+
+                    UI_button_start.Text = "Stop";
+                    UI_button_picture.Enabled = true;
+                    UI_button_popout.Enabled = true;
+                    webcam_on = true;
                 } else
                 {
                     MessageBox.Show("Select a webcam first.");
                 }
-            } else
+            }
+            else
             {
                 MessageBox.Show("Connect a webcam first.");
             }
@@ -113,7 +133,7 @@ namespace ArduinoSupercarUI
 
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Terve");
+            MessageBox.Show("Arduino Supercar Team\n\n Jarno Rostedt\n Teemu Kettunen\n Saija Kaitio\n Seila Laakso\n Niina Sormunen ");
         }
 
         private void UI_webcam_Click(object sender, EventArgs e)
@@ -402,5 +422,25 @@ namespace ArduinoSupercarUI
             UI_Debug.Focus();
         }
 
+        private void arduinoUI_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(webcam_on)
+            {
+                cam.Stop();
+            }
+        }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string ManualPath = Application.StartupPath + @"\Manual\Manual.htm";
+            try
+            {
+                System.Diagnostics.Process.Start(ManualPath);
+            }
+            catch(Exception Ex)
+            {
+                MessageBox.Show("Failed to open manual.\nIt is located in the Manual folder.");
+            }
+        }
     }
 }
